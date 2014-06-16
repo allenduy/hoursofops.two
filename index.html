@@ -8,7 +8,7 @@
 	<body>
 		<div data-ng-controller="MainCtrl">
 			Search: <input type="text" data-ng-model="name" />
-			<div data-ng-repeat="place in detailedPlaces | filter:name">Something Random {{ place.name + " - " + place.vicinity }}</div>
+			<div data-ng-repeat="place in detailedPlaces | filter:name">{{ place.name + " - " + place.vicinity }}</div>
 		</div>
 		<div id="map"></div>
 <!-- library scripts -->
