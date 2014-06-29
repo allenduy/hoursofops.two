@@ -7,40 +7,37 @@ var myApp = angular.module('myApp', ['ngRoute', function ($routeProvider) {
 }]);
 
 // Controllers
-myApp.controller('MainCtrl', function ($scope, placesFactory) {
-   $scope.detailedPlaces = placesFactory.getDetailedResults();
+myApp.controller('MainCtrl', function ($scope, placesService) {
+   $scope.detailedPlaces = placesService.getDetailedResults();
 });
 
 // Services/Factories/Providers
-myApp.factory('placesFactory', function() {
+myApp.service('placesService', function() {
 
    var service;
-   // var infowindow;                     // what is this?
+   var infowindow;                        // what is this?
    var detailsRequest = {};
    var nearbyResults = [];                // array of place objects, needed for referencing detailed results
-   var detailedResults = [];               // array of detailed results
+   var detailedResults = [];              // array of detailed results
    var gps;
 
-   var factory = {};
-
-   factory.getDetailedResults = function() {
+   this.getDetailedResults = function() {
       return detailedResults;
    }
 
    //uses gps to grab coordinates of user location
    function getLocation(callback) {
-      if (navigator.geolocation) {
+      if (navigator.geolocation)
          navigator.geolocation.getCurrentPosition(function(position) {
             gps = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             return callback(gps);
          });
-      } else {
+      else
          alert("Geolocation is not enabled or supported by browser/device.");
-      }
    }
 
    // sends request for nearby places
-   function initialize(location) {
+   function init(location) {
       nearbyRequest = {
          location: location,
          types: ['food'],
@@ -56,60 +53,37 @@ myApp.factory('placesFactory', function() {
    // stores objects of nearbySearch in array
    function nearbyCallBack(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-         for (var i = 0; i < results.length; i++) {
+         for (var i in results)
             nearbyResults[i] = results[i];
-         }
-         if (nearbyResults.length === 20) {
-            initializeDetails(detailsRequest);
-         }
+         if (nearbyResults.length === 20)
+            initDetails(detailsRequest);
       } else {
          console.log("nearbyCallBack: PlacesServiceStatus not OK.");
       }
    }
 
    // places reference of nearbySearch results, and runs getDetails
-   function initializeDetails(detailsRequest) {
+   function initDetails(detailsRequest) {
       var count = -1;
-
-      console.log("Begin Details")
 
       var detailInterval = setInterval(function() {
          if(count < (nearbyResults.length - 1)) {
             ++count;
             detailsRequest.reference = nearbyResults[count].reference;
             service.getDetails(detailsRequest, function(place, status) {
-               if (status == google.maps.places.PlacesServiceStatus.OK) {
+               if (status == google.maps.places.PlacesServiceStatus.OK)
                   detailedResults[count] = place;
-               } else {
+               else
                   console.log("detailCallBack: PlacesServiceStatus not OK.");
-               }
             });
          } else {
             // stops interval after all results return
             clearInterval(detailInterval);
-            console.log("Detailed Results Completed. There are " + detailedResults.length + " detail entries.");
-            // refreshDialer();
-            // for (var i = 0; i <= detailedResults.length; i++) {
-            //    if (typeof detailedResults[i].photos[0] != "undefined") {
-            //       for (var j = 0; j < detailedResults.photos.length; j++) {
-            //          console.log(detailedResults[i].photos[j].getUrl({'max-height': 500, 'max-width': 500}));
-            //       };
-            //    };
-            // };
+            for (var i in detailedResults)
+               console.log(detailedResults[i]);
          }
-      }, 320);
+      }, 390);
    }
 
-   getLocation(initialize); // grabs coordinates and initializes nearbySearch
-   
-   return factory;
+   getLocation(init); // grabs coordinates and initializes nearbySearch
 });
-
-
-
-function refreshDialer(){
-   var container = document.getElementById("lister"); // currently displays "loading page"
-   var content = container.innerHTML; // to display
-   container.innerHTML= content;
-   console.log("Content Refreshed");
-}
