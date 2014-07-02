@@ -82,7 +82,7 @@ myApp.service('placesService', function() {
             for (var i in detailedResults)
                console.log(detailedResults[i]);
          }
-      }, 390);
+      }, 400);       // min time per request to get all 20 results without undefineds
    }
 
    getLocation(init); // grabs coordinates and initializes nearbySearch
