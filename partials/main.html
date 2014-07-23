@@ -1,9 +1,5 @@
-<!-- header & footer to be fixed on screen >>maybe<< -->
-
-<!-- <div ng-include="'partials/header'" id="header"></div> -->
-
-<div id="content">
-	<div ng-include="'partials/expanded'" ng-repeat="item in data" class="expanded"></div>
+<div id="map"></div>
+<input type="text" placeholder="Search" ng-model="name" />
+<div id="locations">
+   <square ng-repeat="place in detailedPlaces" place="place" time-left="timeLeft"></square>
 </div>
-
-<!-- <div ng-include="'partials/footer'" id="footer"></div> -->

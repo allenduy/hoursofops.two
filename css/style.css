@@ -1,125 +1,69 @@
 /* fonts */
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
 
 /* body, head, and footer */
 html, body {
-	margin: 0;
-	height: 100%;
+   margin: 0;
+   height: 100%;
 }
 
 body {
-	background-color: #e5e5e5;
-	font-family: Avenir;
-	font-size: 11px;
-	color: #AAA;
-}
-
-#container {
-	display: block;
-	width: 70%;
-	margin: auto;
-}
-
-#header, #footer {
-	font-family: Arial;
-	font-size: 11px;
-	background: #363739;
-	position: fixed;
-}
-
-#header {
-	z-index: 10;
-	/*height: 40%;*/
-	width: 80%;
-	padding: 3% 10%;
-	overflow: hidden;
-	margin-top: -10%; /*not supposed to happen*/
-}
-
-#leftHead {
-	float: left;
-}
-
-#footer {
-	z-index: 10;
-	bottom: 0;
-	width: 100%;
-	height: 10%;
-	text-align: center;
-	padding: 20px 0 0 0;
-}
-
-#mainLogo {
-	font-family: 'LetsgoDigitalRegular';
-	font-size: 35px;
-	margin: 0 10px 0 0;
-}
-
-#ggLogo {
-	font-family: 'catullregular';
-	font-size: 20px;
+   background-color: #e5e5e5;
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 11px;
+   color: #AAA;
 }
 
 input {
-	border: 0;
-	height: 30px;
-	width: 200px;
-	padding: 0 20px;
-	margin: 20px 0 10px 2%;
+   border: 0;
+   height: 30px;
+   width: 200px;
+   padding: 0 20px;
+   margin: 20px 0 10px 2%;
 }
 
-#content {
-	display: block;
-	background: #FFF;
-	height: 100%;
-	width: 80%;
-	overflow: hidden;
-	/*color: #555;*/
-	/*padding: 10% 0 10% 0;*/
-	margin: 10% auto 0 auto;
-	position: relative;
-}
-
-#locations {
-	width: 100%;
+#container {
+   display: block;
+   width: 70%;
+   margin: auto;
 }
 
 .locationBox {
-	background: grey;
-	position: relative;
-	display: inline-block;
-	width: 21%;
-	height: 0;
-	border-radius: 10%;
-	padding-bottom: 21%;
-	margin: 2%;
-	overflow: hidden;
+   background: grey;
+   position: relative;
+   display: inline-block;
+   width: 21%;
+   height: 0;
+   border-radius: 10%;
+   padding-bottom: 21%;
+   margin: 2%;
+   overflow: hidden;
 }
 
 .placeName {
-	text-align: center;
-	height: ;
-	margin: 5% 10%;
-	color: white;
-	font-size: 1.7vw;
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 100;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.placeInfo {
-	margin: 10%;
-	font-size: 1.1vw;
-	white-space: nowrap;
-	overflow: hidden;
+   background: #DDD;
+   text-align: center;
+   padding: 14% 0 25% 0;
+   margin: 5% 10%;
+   color: white;
+   font-size: 1.7vw;
+   font-weight: 400;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   z-index: 0;
 }
 
 .time {
-	background: #ccc;
-	border-radius: 10em 10em;
-	text-align: center;
-	padding: 10% 5%;
-	margin: 7% 15%;
+   font-family: 'Poiret One', cursive;
+   background: #ccc;
+   border-radius: 10em 10em;
+   /*border-radius: 50%;*/
+   text-align: center;
+   padding: 10% 0;
+   margin: 7% 21%;
+   z-index: 10;
+   font-size: 2vw;
+   display: visible;
 }
