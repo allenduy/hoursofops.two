@@ -1,7 +1,9 @@
-var myApp = angular.module('myApp', ['ngRoute', function ($routeProvider) {
+// when ... go to ...
+var app = angular.module('hoursOps', ['ngRoute', function ($routeProvider) {
    $routeProvider.when('/', {
-      templateUrl: 'partials/main',
-      controller: 'MainCtrl'
+      controller: 'MainController',
+      controllerAs: 'mainCtrl',
+      templateUrl: 'partials/main'
    }).otherwise({
       redirectTo: '/'
    });

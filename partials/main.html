@@ -1,5 +1,5 @@
-<div id="map"></div>
+<div id="map" ng-hide></div>
 <input type="text" placeholder="Search" ng-model="name" />
 <div id="locations">
-   <square ng-repeat="place in detailedPlaces" place="place" time-left="timeLeft"></square>
+   <square ng-repeat="place in detailedPlaces" place="place"></square>
 </div>

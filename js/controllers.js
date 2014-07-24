@@ -1,5 +1,9 @@
-myApp.controller('MainCtrl', ['$scope', '$interval', '$timeout', 'placesService', function ($scope, $interval, $timeout, placesService) {
-   $interval(function() {
-      $scope.detailedPlaces = placesService.getPlaces();
-   }, 100);
+app.controller('MainController', ['$scope', '$interval', 'placesService', function ($scope, $interval, placesService) {
+   $scope.detailedPlaces = [];
+   var verifyCompletion = $interval(function(){
+      if (placesService.getVerif()) {
+         $interval.cancel(verifyCompletion);
+         $scope.detailedPlaces = placesService.getPlaces();
+      };
+   }, 700);
 }]);
