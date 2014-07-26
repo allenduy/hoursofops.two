@@ -57,7 +57,7 @@ app.service('placesService', function() {
          service.getDetails(nearbyResults[count], function(place, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                detailedResults.push(place);
-               initDetails(count+1);
+               initDetails(count + 1);
             } else {
                setTimeout(function() { initDetails(count); }, 70);
             };
