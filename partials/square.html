@@ -1,4 +1,7 @@
 <div class="locationBox">
-   <div class="placeName"><span>{{place.name}}</span></div>
-   <div class="time">{{place.timeLeft | formatTime}}</div>
+    <div class="placeName"><span>{{place.name}}</span></div>
+    <div class="time" ng-hide="place.statuses.waiting"><span>{{place.timeLeft | formatTime}}</span>
+        <br /><span class="statusLabel" ng-show="place.statuses.counting">until close</span></div>
+    <div class="time" ng-show="place.statuses.waiting"><span class="statusLabel">opens at</span>
+        <br /><span>{{place.timeLeft | date: 'h:mm a'}}</span></div>
 </div>

@@ -15,7 +15,7 @@ app.service('placesService', function() {
    };
 
    //uses gps to grab coordinates of user location
-   function getLocation(callback) {
+   (function getLocation(callback) {
       if (navigator.geolocation)
          navigator.geolocation.getCurrentPosition(function(position) {
             gps = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -23,7 +23,7 @@ app.service('placesService', function() {
          });
       else
          alert("Geolocation is not enabled or supported by browser/device.");
-   }
+   })(init);
 
    // sends request for nearby places
    function init(location) {
@@ -67,6 +67,4 @@ app.service('placesService', function() {
          for (var i in detailedResults) console.log(detailedResults[i]);
       }; // end if
    }
-
-   getLocation(init); // grabs coordinates and initializes nearbySearch
 });
