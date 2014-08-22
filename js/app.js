@@ -1,11 +1,15 @@
 // when [/path] use template [url]
-var app = angular.module('hoursOps', ['ngRoute'])
+var app = angular.module('hoursOps', ['ngAnimate', 'ngRoute', 'ngFitText']);
 
-.config(function ($routeProvider) {
+app.config(function ($routeProvider) {
   $routeProvider.when('/', {
     controller: 'MainController',
     controllerAs: 'mainCtrl',
-    templateUrl: 'partials/main'
+    templateUrl: 'partials/main.html'
+  }).when('/how', {
+    // controller: '',
+    // controllerAs: '',
+    templateUrl: 'partials/how.html'
   }).otherwise({
     redirectTo: '/'
   });

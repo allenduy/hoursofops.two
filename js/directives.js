@@ -1,14 +1,11 @@
 app.directive('square', function ($interval) {
   return {
-    scope: {
-      place: '='
-    },
     restrict: 'E',
     replace: true,
-    templateUrl: 'partials/square',
+    templateUrl: 'partials/square.html',
     link: function(scope, element, attrs) {
       // initialize status with 'loading...'
-      scope.place.timeLeft = 'loading...';
+      scope.place.timeLeft = 'loading';
       scope.place.statuses = new function() {
         this.counting = false;
         this.waiting = false;
@@ -28,12 +25,12 @@ app.directive('square', function ($interval) {
 
       // defined conditions by name
       // if hours defined, set other variables
-      var hoursNotFound = (scope.place.opening_hours === undefined);
+      var hoursNotFound = !scope.place.opening_hours;
       if (!hoursNotFound) {
-        var placeNeverCloses = scope.place.opening_hours.periods[0].close === undefined;
+        var placeNeverCloses = !scope.place.opening_hours.periods[0].close;
         var periods = scope.place.opening_hours.periods;
       };
-
+      
       // initial check for existing properties or 24 hours stores
       switch (true) {
         case hoursNotFound:
@@ -50,6 +47,14 @@ app.directive('square', function ($interval) {
           }, 1000);
           break;
       };
+
+      // check for period with correct day and return index, otherwise, empty string
+      function getPeriod(day) {
+        for (var i in periods) {
+          if (periods[i].open.day === day) return parseInt(i);
+          if (i === periods.length - 1) return '';
+        };
+      }
 
       // constant required for difference when checking previous day
       var ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -74,7 +79,8 @@ app.directive('square', function ($interval) {
         }
 
         switch (true) {
-          case !!index && !!indexPre: // if now<open {if now<pre, pre-now, else open at ''}, else {if now<close, close-now, else closed}
+          // if now < open, [if now < pre, pre - now, else open at ''], else [if now < close, close - now, else closed]
+          case !!index && !!indexPre:
             if (now < open) {
               if (now < closePre) {
                 scope.place.statuses.count();
@@ -93,7 +99,8 @@ app.directive('square', function ($interval) {
               };
             };
             break;
-          case !!index && !indexPre: // if now<open, open at '', else {if now < close, close - now, else closed}
+          // if now < open, open at '', else [if now < close, close - now, else closed]
+          case !!index && !indexPre:
             if (now < open) {
               scope.place.statuses.wait();
               return open;
@@ -107,7 +114,8 @@ app.directive('square', function ($interval) {
               };
             };
             break;
-          case !index && !!indexPre: // if now < pre, pre - now, else closed
+          // if now < pre, pre - now, else closed
+          case !index && !!indexPre:
             if (now < closePre) {
               scope.place.statuses.wait();
               return closePre - now;
@@ -122,13 +130,36 @@ app.directive('square', function ($interval) {
         };
       }
 
-      // check for period with correct day and return index, otherwise, empty string
-      function getPeriod(day) {
-        for (var i in periods) {
-          if (periods[i].open.day === day) return parseInt(i);
-          if (i === periods.length - 1) return '';
-        };
+      // if photos exist, randomize index from length & set URL, else set none
+      if (!!scope.place.photos) {
+        var rand = Math.round(Math.random() * (scope.place.photos.length - 1));
+        scope.place.photoUrl = scope.place.photos[rand].getUrl({'maxWidth': 700, 'maxHeight': 700});
+      } else {
+        scope.place.photoUrl = '';
       }
     }
   };
 });
+
+app.directive('heading', [function () {
+  return {
+    scope: false,
+    restrict: 'E',
+    replace: false,
+    templateUrl: 'partials/heading.html',
+    controller: 'MainController',
+    controllerAs: 'mainCtrl',
+    link: function() {
+
+    }
+  };
+}]);
+
+app.directive('clocker', [function () {
+  return {
+    restrict: 'A',
+    link: function (scope, iElement, iAttrs) {
+      
+    }
+  };
+}])

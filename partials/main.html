@@ -1,5 +1,7 @@
-<div id="map" ng-hide></div>
-<!-- <input type="text" placeholder="Search" ng-model="name" /> -->
-<div id="locations">
-   <square ng-repeat="place in detailedPlaces" place="place"></square>
-</div>
+<!-- map required for data -->
+<div id="map" ng-hide="true"></div><!-- end #map -->
+
+<div id="locations" ng-hide="mainCtrl.loading">
+    <!-- <input type="text" placeholder="Search" ng-model="name" /> -->
+    <square ng-repeat="place in mainCtrl.detailedPlaces"></square>
+</div><!-- end #locations -->

@@ -16,7 +16,7 @@ app.filter('formatTime', function() {
 
       for (var i in time) {
          time[i] = (time[i] < 10) ? '0' + time[i] : time[i];
-         time[i] = (time[i] < 0) ? '00' : time[i];
+         time[i] = (time[i] <= 0) ? '00' : time[i];
       };
 
       // return hh:mm:ss
@@ -32,20 +32,26 @@ app.filter('formatName', function() {
       if (name.length < 2) return input;
       var cut = [];
 
-      (function(lastIndex) {
+      (function countName(lastIndex) {
+         var total = 0;
          for (var i = lastIndex; i >= 0; i--) {
             var length = 0;
             
             for (var j = i; j >= 0; j--) {
                length += name[j].length;
+               if (j === 0) { total = length };
             };
 
             // if (length <= 13) {
-            //    cut.push(name.splice(i + 1,).join(' '));
+            //    cut.push(name.splice(0, i + 1).join(' '));
+            //    if (total - length > 13) {
+            //       return total;
+            //    };
             // };
          };
       })(name.length - 1);
 
-      return cut.join('<br />');
+      return angular.lowercase(input);
+      // return cut.join('<br />');
    }
 });

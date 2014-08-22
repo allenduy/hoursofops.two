@@ -1,0 +1,24 @@
+<!-- this section has two states: header & loader -->
+<div id="heading" ng-class="{loaded: !mainCtrl.loading}">
+    <div class="content" ng-class="{poseCenter: mainCtrl.loading, loaded: !mainCtrl.loading}">
+        <!-- logo -->
+        <div fittext="0.9">
+            <div class="logoText">HOURS</div>
+            <div id="clock" clocker>
+                <div id="tick">
+                    <div id="tip"></div>
+                    <div id="base"></div>
+                </div>
+            </div>
+            <div class="logoText">F OPS</div>
+        </div>
+        <!-- <img src="media/pbg/nonwhite.png" id="pbg" ng-hide="mainCtrl.loading"> -->
+
+        <!-- loading bullets -->
+        <div style="color: #FFF; font-size: 1.5em !important;" ng-show="mainCtrl.loading">
+            <span class="loader" style="left: -30px; animation-delay: 0s; -webkit-animation-delay: 0s;">&#8226</span>
+            <span class="loader">&#8226</span>
+            <span class="loader" style="left: 30px; animation-delay: 2s; -webkit-animation-delay: 2s;">&#8226</span>
+        </div>
+    </div>
+</div>

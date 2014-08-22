@@ -1,7 +1,28 @@
-<div class="locationBox">
-    <div class="placeName"><span>{{place.name}}</span></div>
-    <div class="time" ng-hide="place.statuses.waiting"><span>{{place.timeLeft | formatTime}}</span>
-        <br /><span class="statusLabel" ng-show="place.statuses.counting">until close</span></div>
-    <div class="time" ng-show="place.statuses.waiting"><span class="statusLabel">opens at</span>
-        <br /><span>{{place.timeLeft | date: 'h:mm a'}}</span></div>
+<div class="sqrBox">
+    <div class="sqrBack" ng-style="{'background-image': 'url(' + place.photoUrl + ')'}"></div>
+    <div class="poseCenter">
+        <!-- display name of place -->
+        <div class="placeName" fittext>
+            {{place.name | formatName}}
+        </div>
+
+        <!-- display time/status of place -->
+        <div class="time poseCenter" ng-hide="place.statuses.waiting">
+            <span>{{place.timeLeft | formatTime}}</span>
+            <br />
+            <span class="statusLabel" ng-show="place.statuses.counting">until close</span>
+        </div>
+
+        <!-- display opening time of place -->
+        <div class="time poseCenter" ng-show="place.statuses.waiting">
+            <span class="statusLabel">opens at</span>
+            <br />
+            <span>{{place.timeLeft | date: 'h:mm a'}}</span>
+        </div>
+
+        <!-- display distance of place to current location -->
+        <div class="distance">
+            distance: {{place.distance}}
+        </div>
+    </div>
 </div>
