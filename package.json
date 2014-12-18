@@ -1,0 +1,23 @@
+{
+  "name": "hoursofops.two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "compression": "^1.2.2",
+    "express": "^4.10.6",
+    "method-override": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://allenduy@bitbucket.org/allenduy/hoursofops.two.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true
+}

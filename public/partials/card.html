@@ -1,0 +1,26 @@
+<div class="card">
+  
+  <!-- if photos exists, display icon -->
+  <!-- <div class="cardB" ng-style="{'background-image': 'url(' + place.photoUrl + ')'}"></div> -->
+  <!-- <div class="poseCenter"> -->
+
+    <!-- display name of place -->
+    <div class="placeName">
+      {{place.name | formatName}}
+    </div>
+
+    <!-- display time/status of place -->
+    <div class="time poseCenter" ng-hide="place.statuses.waiting">
+      <span>{{place.timeLeft | formatTime}}</span>
+      <br />
+      <span class="statusLabel" ng-show="place.statuses.counting">until close</span>
+    </div>
+
+    <!-- display opening time of place -->
+    <div class="time poseCenter" ng-show="place.statuses.waiting">
+      <span class="statusLabel">opens at</span>
+      <br />
+      <span>{{place.timeLeft | date: 'h:mm a'}}</span>
+    </div>
+  <!-- </div> -->
+</div>

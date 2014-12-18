@@ -1,0 +1,23 @@
+#splash {
+  transition: .7s ease-in all;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: show 2s ease-in;
+  -moz-animation: show 2s ease-in;
+  -o-animation: show 2s ease-in;
+  animation: show 2s ease-in;
+  /*overflow: hidden;*/
+}
+
+#splash > div {
+  height: 100px;
+}
+
+.loader {
+  display: inline;
+  -webkit-animation: tap 4s ease-out 1s infinite;
+  -moz-animation: tap 4s ease-out 1s infinite;
+  -o-animation: tap 4s ease-out 1s infinite;
+  animation: tap 4s ease-out 1s infinite;
+}

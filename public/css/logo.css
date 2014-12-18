@@ -1,0 +1,53 @@
+#logo {
+  width: 50%;
+  min-height: 40px;
+  min-width: 370px;
+  font-weight: 100;
+  display: inline-block;
+}
+
+  #clock {
+    width: 8%;
+    position: relative;
+    top: 2px;
+    left: 7px;
+    border-radius: 100%;
+    border: 3px solid #AAA;
+    display: inline-block;
+  }
+
+    #clock div {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      margin: auto;
+    }
+
+    #clock::before {
+      content: '';
+      padding-top: 100%;
+      display: block;
+    }
+
+    #tick {
+      -webkit-animation: rotate 30s linear 0 infinite;
+      -moz-animation: rotate 30s linear 0 infinite;
+      -o-animation: rotate 30s linear 0 infinite;
+      animation: rotate 30s linear 0 infinite;
+    }
+
+      #tick > div {
+        height: 0;
+        width: 0;
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+      }
+
+        #tip {
+          top: 13px !important;
+          border-top: 14px solid #AAA;
+        }
+
+        #base {
+          top: -5px !important;
+          border-bottom: 5px solid #AAA;
+        }
