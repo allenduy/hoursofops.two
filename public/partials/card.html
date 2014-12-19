@@ -10,17 +10,14 @@
     </div>
 
     <!-- display time/status of place -->
-    <div class="time poseCenter" ng-hide="place.statuses.waiting">
-      <span>{{place.timeLeft | formatTime}}</span>
+    <div class="time">
+      <span class="statusLabel" ng-show="place.statuses.waiting">opens at</span>
+      <br />
+      <span ng-show="place.statuses.waiting">{{place.timeLeft | date: 'h:mm a'}}</span>
+      <span ng-hide="place.statuses.waiting">{{place.timeLeft | formatTime}}</span>
       <br />
       <span class="statusLabel" ng-show="place.statuses.counting">until close</span>
     </div>
 
-    <!-- display opening time of place -->
-    <div class="time poseCenter" ng-show="place.statuses.waiting">
-      <span class="statusLabel">opens at</span>
-      <br />
-      <span>{{place.timeLeft | date: 'h:mm a'}}</span>
-    </div>
   <!-- </div> -->
 </div>
