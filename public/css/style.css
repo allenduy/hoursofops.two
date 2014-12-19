@@ -3,7 +3,6 @@
 @import url(http://fonts.googleapis.com/css?family=Poiret+One);
 
 html, body, #view{
-    /*position: relative;*/
     margin: 0;
     height: 100%;
     width: 100%;
@@ -12,47 +11,22 @@ html, body, #view{
 body {
     background-color: #333;
     font-family: 'Josefin Sans', sans-serif;
-    /*font-size: 15px;*/
     color: #AAA;
 }
 
-#view {
-    /*width: 80%;*/
-    /*margin: 0 10%;*/
-}
-
-.headBar {
-    background-color: #d5d5d5;
-    height: 50%; width: 100%;
-    min-height: 250px; max-height: 500px;
-    z-index: 100;
-}
-
-.headBar div {
-    /*display: block;*/
-    margin: auto;
-    /*top: 0; right: 0; bottom: 0; left: 0;*/
-    z-index: 100;
-}
-
-#pbg {
-    position: relative;
-    /*display: inline-block;*/
-    top: 30px;
-    left: 245px;
-}
-
-.poseCenter, .splashContent.poseCenter {
+.poseCenter {
     position: absolute;
     margin: auto;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
-/* location boxes style */
-
+/* cards' container */
 #locations {
     display: block;
-    /*width: 70%;*/
+    width: 70%;
     margin: auto;
     height: 100%;
 }
@@ -107,7 +81,7 @@ body {
 }
 
 .statusLabel {
-    position: relative;
+    /*position: relative;*/
     font-size: 77%;
     line-height: 20px;
     top: -3px;
@@ -119,5 +93,3 @@ body {
     width: 100%;
     padding: 20% 0 10% 0;
 }
-
-/* use -webkit-filter: blur(3px); filter: blur(3px); */
